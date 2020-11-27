@@ -14,8 +14,8 @@ on:
     types: [started]
 
 env:
-  FIRMWARE_LINK:
-  FIRMWARE_NAME:
+  FIRMWARE_LINK: https://download.c.realme.com/osupdate/CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip
+  FIRMWARE_NAME: CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip
   TZ: Asia/Kolkata
 
 jobs:
@@ -26,19 +26,27 @@ jobs:
        - name: Checkout
          uses: actions/checkout@master
          
-       - name: Downloading Ozip Now 
+       - name: Downloading Ozip Now.. 
          run: |
             sudo -E apt-get -qq update
             wget $FIRMWARE_LINK
-            bash android_build_env.sh
              
        - name: Decrypting Ozip Now
          run: |
              sudo -E apt-get -qq update
-             wget https://raw.githubusercontent.com/bkerler/oppo_ozip_decrypt/master/ozipdecrypt.py
-             bash ./ozipdecrypt.py $FIRMWARE_NAME
+             sudo apt-get install python-pip
+             sudo pip install docopt
+             sudo pip install pycryptodome
+             wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
+             sudo python3 ozipdecrypt.py $FIRMWARE_NAME
              
        - name: Upload Decrypted Zip
          run: |
+              touch links.txt
               curl -sL https://git.io/file-transfer | sh
-              ./transfer wet *$FIRMWARE_NAME*.zip    
+              echo "Download Link :" >> links.txt
+              ./transfer wet *$FIRMWARE_NAME*.zip
+
+       - name: Print download link
+         run: |
+              cat links.txt    
