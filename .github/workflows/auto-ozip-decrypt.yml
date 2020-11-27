@@ -1,0 +1,45 @@
+
+name: OZIP Decrypter by TechyMinati : ) 
+
+on:
+#  release:
+#    types: [published]
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+
+env:
+  FIRMWARE_LINK:
+  FIRMWARE_NAME:
+  TZ: Asia/Kolkata
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+         
+       - name: Downloading Ozip Now 
+         run: |
+            sudo -E apt-get -qq update
+            wget $FIRMWARE_LINK
+            bash android_build_env.sh
+             
+       - name: Decrypting Ozip Now
+         run: |
+             sudo -E apt-get -qq update
+             wget https://raw.githubusercontent.com/bkerler/oppo_ozip_decrypt/master/ozipdecrypt.py
+             bash ./ozipdecrypt.py $FIRMWARE_NAME
+             
+       - name: Upload Decrypted Zip
+         run: |
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet *$FIRMWARE_NAME*.zip    
