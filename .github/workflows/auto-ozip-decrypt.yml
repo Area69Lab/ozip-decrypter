@@ -35,8 +35,8 @@ jobs:
          run: |
              sudo -E apt-get -qq update
              sudo apt-get install python-pip
-             sudo pip install docopt
-             sudo pip install pycryptodome
+             sudo -H pip install --upgrade pip
+             sudo -H pip install docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python3 ozipdecrypt.py $FIRMWARE_NAME
              
@@ -44,9 +44,4 @@ jobs:
          run: |
               touch links.txt
               curl -sL https://git.io/file-transfer | sh
-              echo "Download Link :" >> links.txt
               ./transfer wet *$FIRMWARE_NAME*.zip
-
-       - name: Print download link
-         run: |
-              cat links.txt    
