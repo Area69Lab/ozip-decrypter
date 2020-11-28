@@ -20,7 +20,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     steps:
        - name: Checkout
@@ -29,14 +29,15 @@ jobs:
        - name: Downloading Ozip Now.. 
          run: |
             sudo -E apt-get -qq update
-            wget $FIRMWARE_LINK
+            sudo apt install aria2
+            aria2c $FIRMWARE_LINK
              
        - name: Decrypting Ozip Now
          run: |
              sudo -E apt-get -qq update
-             sudo apt-get install python-pip
-             sudo -H pip install --upgrade pip
-             sudo -H pip install docopt pycryptodome
+             sudo apt-get install pip3
+             sudo -H pip3 install --upgrade pip
+             sudo -H pip3 install wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python3 ozipdecrypt.py $FIRMWARE_NAME
              
