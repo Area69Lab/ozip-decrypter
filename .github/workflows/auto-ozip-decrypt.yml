@@ -36,10 +36,10 @@ jobs:
          run: |
              sudo -E apt-get -qq update
              sudo apt-get install python-pip
-             sudo -H pip3 install --upgrade pip
-             sudo -H pip3 install setuptools wheel docopt pycryptodome
+             sudo -H pip install --upgrade pip
+             sudo -H pip install setuptools wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
-             sudo python3 ozipdecrypt.py $FIRMWARE_NAME
+             sudo python ozipdecrypt.py $FIRMWARE_NAME
              
        - name: Upload Decrypted Zip
          run: |
