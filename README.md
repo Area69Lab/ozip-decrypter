@@ -18,7 +18,7 @@ Here are some useful notes to using this tool brewed with black magic xD !
 
 ```FIRMWARE_LIK : Direct Link to ozip (can be found in realme/oppo website)```
 
-```FIRMWARE_NAME : The Name of Ozip (like CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip)``
+```FIRMWARE_NAME : The Name of Ozip (like CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip)```
 
 3. Go to actions tab, enable workflows.
 
