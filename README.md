@@ -34,3 +34,5 @@ Huge help from [***ElytrA8***](https://github.com/Elytra8)
 
 
 Enjoy Decrypting Ozip Online :)
+
+©Area69Lab
