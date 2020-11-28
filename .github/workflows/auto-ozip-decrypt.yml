@@ -35,7 +35,7 @@ jobs:
        - name: Decrypting Ozip Now
          run: |
              sudo -E apt-get -qq update
-             sudo apt-get install pip3
+             sudo apt-get install python-pip
              sudo -H pip3 install --upgrade pip
              sudo -H pip3 install wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
