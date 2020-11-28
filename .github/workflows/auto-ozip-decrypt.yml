@@ -15,7 +15,7 @@ on:
 
 env:
   FIRMWARE_LINK: https://download.c.realme.com/osupdate/CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip
-  FIRMWARE_NAME: CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip
+  FIRMWARE_NAME: CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t
   TZ: Asia/Kolkata
 
 jobs:
