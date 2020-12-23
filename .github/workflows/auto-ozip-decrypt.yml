@@ -37,7 +37,7 @@ jobs:
              sudo -E apt-get -qq update
              sudo apt-get install python-pip
              sudo -H pip install --upgrade pip
-             sudo -H pip install setuptools wheel docopt pycryptodome zipfile
+             sudo -H pip install setuptools wheel docopt pycryptodome zip
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python ozipdecrypt.py $FIRMWARE_NAME
 
