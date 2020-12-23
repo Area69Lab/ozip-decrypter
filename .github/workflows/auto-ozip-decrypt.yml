@@ -16,7 +16,6 @@ on:
 env:
   FIRMWARE_LINK: https://download.c.realme.com/osupdate/RMX1851EX_11_OTA_1100_all_afysQxXkAd0p.ozip
   FIRMWARE_NAME: RMX1851EX_11_OTA_1100_all_afysQxXkAd0p.ozip
-  FIRMWARE_PATH: RMX1851EX_11_OTA_1100_all_afysQxXkAd0p
   TZ: Asia/Kolkata
 
 jobs:
@@ -41,7 +40,7 @@ jobs:
              sudo -H pip install setuptools wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python ozipdecrypt.py $FIRMWARE_NAME
-             zip -r firmware.zip $FIRMWARE_PATH
+             zip -r firmware.zip ./out/*
        - name: Upload Decrypted Zip
          run: |
               curl -sL https://git.io/file-transfer | sh
