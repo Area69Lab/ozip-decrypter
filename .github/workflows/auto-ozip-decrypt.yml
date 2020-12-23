@@ -40,7 +40,10 @@ jobs:
              sudo -H pip install setuptools wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python ozipdecrypt.py $FIRMWARE_NAME
-             
+             ls 
+             cd out
+             ls
+
        - name: Upload Decrypted Zip
          run: |
               cd out
