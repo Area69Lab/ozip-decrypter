@@ -1,0 +1,65 @@
+name: RMX1901 Ozip Decrypter
+
+on:
+#  release:
+#    types: [published]
+#  push:
+#    branches:
+#      - master
+#    paths:
+#      - '.config'
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+
+env:
+  FIRMWARE_LINK: https://download.c.realme.com/osupdate/RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA.ozip
+  FIRMWARE_NAME: RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA.ozip
+  FIRMWARE_ZIP_NAME: RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA_RUI_1.0
+  SFUSER: ${{ secrets.SFUSER }}
+  SFPASS: ${{ secrets.SFPASS }}
+  SFDIR: ${{ secrets.SFDIR }}
+  TZ: Asia/Kolkata
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+         
+       - name: Downloading Ozip Now.. 
+         run: |
+            sudo -E apt-get -qq update
+            sudo apt install aria2 expect -y
+            aria2c $FIRMWARE_LINK
+             
+       - name: Decrypting Ozip Now
+         run: |
+             sudo -E apt-get -qq update
+             sudo apt-get install python-pip
+             sudo -H pip install --upgrade pip
+             sudo -H pip install setuptools wheel docopt pycryptodome zip
+             wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
+             sudo python ozipdecrypt.py $FIRMWARE_NAME
+             zip -r $FIRMWARE_ZIP_NAME.zip ./out/*
+
+       - name: Upload Decrypted Zip
+         run: |
+              expect -c " 
+              spawn sftp $SFUSER@frs.sourceforge.net
+              expect \"yes/no\"
+              send \"yes\r\"
+              expect \"Password\"        
+              send \"$SFPASS\r\"
+              expect \"sftp> \"
+              send \"cd $SFDIR\r\"
+              set timeout -1
+              send \"put $FIRMWARE_ZIP_NAME.zip\r\"
+              expect \"Uploading\"
+              expect \"100%\"
+              expect \"sftp>\"
+              send \"bye\r\"
+              interact"     
