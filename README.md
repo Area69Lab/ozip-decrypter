@@ -1,37 +1,32 @@
 # Ozip Decrypting online made easy #
 
 ## What this is ##
----------------------------------------------------------------------
-This is an easy way to decrypt Ozip ( Firmware of oppo/realme) to a TWRP Flashable Zip!!
 
-This works with GitHub actions, thank GitHub not me : )
+This is an easy way to decrypt Ozip (Firmware of oppo/realme) to a TWRP Flashable Zip. This works with GitHub actions, thank GitHub not me :)
 
-### How to use ###
+## How to use ##
 
 Here are some useful notes to using this tool brewed with black magic xD !
 
-1. Fork the repo .
+1. Fork the repo
+1. Set the variables, as listed below:
+    - `FIRMWARE_LINK` : Direct Link to ozip (can be found in realme/oppo website, or yours. HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink are supported)
+    - `FIRMWARE_NAME` : The Name of Ozip (i.e CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip)
+    - `FIRMWARE_ZIP_NAME`: The Name of zip to be created
+1. Go to the `settings` tab of the repo and create the encrypted secrets (follow the docs [here](https://docs.github.com/en/actions/reference/encrypted-secrets)) listed below:
+    - `SFUSER`: SourceForge username
+    - `SFPASS`: SourceForge password
+    - `SFDIR`: SourceForge project directory
+1. Go to the `actions` tab and enable workflows.
+1. Star the repo, go to actions tab again, the workflow must have started. Now let Magic Work xD
 
-2. Set the variables, as listed below.
+## Credits ##
 
-##Some variables that you'd like to set:##
+**Thanks to the people who helped me**
 
-```FIRMWARE_LIK : Direct Link to ozip (can be found in realme/oppo website)```
-
-```FIRMWARE_NAME : The Name of Ozip (like CPH1861EX_11_OTA_0500_all_fLuS0Ipoe93t.ozip)```
-
-3. Go to actions tab, enable workflows.
-
-4. Star the repo, go to actions tab again, and let Magic Work xD
-
-
-#### Credits and Thanks to People Who Helped me####
-
-Script Made by [***Aryan Sinha***](https://github.com/techyminati)
-
-Huge help from [***ElytrA8***](https://github.com/Elytra8)
-
-
+- Script Made by [***Aryan Sinha***](https://github.com/techyminati)
+- Huge help from [***ElytrA8***](https://github.com/Elytra8)
+- Docs & workflow updated by [***chankruze***](https://github.com/chankruze)
 
 Enjoy Decrypting Ozip Online :)
 
