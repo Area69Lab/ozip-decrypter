@@ -14,9 +14,9 @@ on:
     types: [started]
 
 env:
-  FIRMWARE_LINK: https://download.c.realme.com/osupdate/RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA.ozip
-  FIRMWARE_NAME: RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA.ozip
-  FIRMWARE_ZIP_NAME: RMX1901EX_11_OTA_1120_all_HCHFYlVnzhGA_RUI_1.0
+  FIRMWARE_LINK: https://master.dl.sourceforge.net/project/ozip-decrypt/RMX1901EX_11_OTA_10200270_all_236N4HwASEdD.ozip?viasf=1
+  FIRMWARE_NAME: RMX1901EX_11_OTA_10200270_all_236N4HwASEdD.ozip
+  FIRMWARE_ZIP_NAME: RMX1901EX_11_OTA_10200270_all_236N4HwASEdD_RUI_2.0
   SFUSER: ${{ secrets.SFUSER }}
   SFPASS: ${{ secrets.SFPASS }}
   SFDIR: ${{ secrets.SFDIR }}
